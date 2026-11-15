@@ -1,8 +1,6 @@
 package com.aminef.sidekick.expense.adapter.in.web;
 
-import com.aminef.sidekick.expense.application.port.in.CreateExpenseCommand;
-import com.aminef.sidekick.expense.application.port.in.CreateExpenseUseCase;
-import com.aminef.sidekick.expense.application.port.in.GetExpenseUseCase;
+import com.aminef.sidekick.expense.application.port.in.*;
 import com.aminef.sidekick.expense.domain.Expense;
 import com.aminef.sidekick.expense.domain.ExpenseId;
 import com.aminef.sidekick.expense.domain.Money;
@@ -23,14 +21,16 @@ public class ExpenseController {
 
     private final CreateExpenseUseCase createExpenseUseCase;
     private final GetExpenseUseCase getExpenseUseCase;
+    private final UpdateExpenseUseCase updateExpenseUseCase;
 
-    public ExpenseController(CreateExpenseUseCase createExpenseUseCase, GetExpenseUseCase getExpenseUseCase) {
+    public ExpenseController(CreateExpenseUseCase createExpenseUseCase, GetExpenseUseCase getExpenseUseCase, UpdateExpenseUseCase updateExpenseUseCase) {
         this.createExpenseUseCase = createExpenseUseCase;
         this.getExpenseUseCase = getExpenseUseCase;
+        this.updateExpenseUseCase = updateExpenseUseCase;
     }
 
     @PostMapping
-    ResponseEntity<ExpenseResponse> create(@Valid @RequestBody CreateExpenseRequest req) {
+    ResponseEntity<ExpenseResponse> create(@Valid @RequestBody ExpenseRequest req) {
         // 1. HTTP language -> domain language
         var command = new CreateExpenseCommand(
                 new Money(req.amount(), Currency.getInstance(req.currency())),
@@ -54,5 +54,13 @@ public class ExpenseController {
     ResponseEntity<ExpenseResponse> findById(@PathVariable UUID id) {
         Expense expense = getExpenseUseCase.getExpense(new ExpenseId(id));
         return ResponseEntity.ok(ExpenseResponse.from(expense));
+    }
+
+    @PutMapping("/{id}")
+    ResponseEntity<ExpenseResponse> updateExpense(@PathVariable UUID id, @Valid @RequestBody ExpenseRequest req) {
+        var command = new UpdateExpenseCommand(new ExpenseId(id),new Money(req.amount(),Currency.getInstance(req.currency())),req.description(),req.category(),req.spentOn());
+        Expense updated = updateExpenseUseCase.updateExpense(command);
+        return ResponseEntity.ok()
+                .body(ExpenseResponse.from(updated));
     }
 }

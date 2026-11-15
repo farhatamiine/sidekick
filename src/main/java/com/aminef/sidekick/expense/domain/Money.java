@@ -7,9 +7,10 @@ import java.util.Objects;
 
 public record Money(BigDecimal amount, Currency currency) {
     public Money{
-        Objects.requireNonNull(amount, "Amount is required");
-        Objects.requireNonNull(currency, "Currency is required");
-        if(amount.signum() <= 0) throw new DomainValidationException("Amount must be greater than or equal to zero");
+        if(amount == null || currency == null){
+            throw new DomainValidationException("Amount and currency is required");
+        }
+        if(amount.signum() <= 0) throw new DomainValidationException("Amount must be greater than zero");
         amount = amount.setScale(2, RoundingMode.HALF_EVEN);
     }
 

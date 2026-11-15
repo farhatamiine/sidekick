@@ -25,7 +25,7 @@ public class CreateExpenseService implements CreateExpenseUseCase {
     @Override
     @Transactional
     public Expense createExpense(CreateExpenseCommand command) {
-        // 1. Let the domain build (and validate) the expense
+        // 1. Let the domain build (and validate) the loadById
         Expense expense = Expense.create(command.amount(), command.description(),
                 command.category(), command.spentOn(), clock);
         // 2. Ask the outside world to store it. The service has no idea it's Postgres.

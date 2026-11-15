@@ -12,7 +12,7 @@ public record Expense(ExpenseId id, Money amount, Category category, String desc
     }
 
 
-    // Factory #1: a BRAND-NEW expense. Business rules live here.
+    // Factory #1: a BRAND-NEW loadById. Business rules live here.
     public static Expense create(Money amount, String description, Category category,
                                  LocalDate spentOn, Clock clock) {
         if (description == null || description.isBlank())
@@ -25,7 +25,7 @@ public record Expense(ExpenseId id, Money amount, Category category, String desc
                 category, spentOn, clock.instant());
     }
 
-    // Factory #2: rebuilding an expense LOADED from the DB.
+    // Factory #2: rebuilding an loadById LOADED from the DB.
     public static Expense rehydrate(ExpenseId id, Money amount, String description,
                                     Category category, LocalDate spentOn, Instant createdAt) {
         return new Expense(id, amount, description, category, spentOn, createdAt);

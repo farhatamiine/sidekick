@@ -1,11 +1,17 @@
 package com.aminef.sidekick.expense.adapter.out.persistence;
 
+import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
 import com.aminef.sidekick.expense.application.port.out.SaveExpensePort;
 import com.aminef.sidekick.expense.domain.Expense;
+import com.aminef.sidekick.expense.domain.ExpenseId;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 @Component
-public class ExpensePersistenceAdapter implements SaveExpensePort {
+public class ExpensePersistenceAdapter implements SaveExpensePort, LoadExpensePort {
 
 
     private final SpringDataExpenseRepository  springDataExpenseRepository;
@@ -17,5 +23,15 @@ public class ExpensePersistenceAdapter implements SaveExpensePort {
     @Override
     public void save(Expense expense) {
         springDataExpenseRepository.save(ExpenseMapper.toEntity(expense));
+    }
+
+    @Override
+    public Optional<Expense> loadById(ExpenseId expenseId) {
+        return  springDataExpenseRepository.findById(expenseId.value()).map(ExpenseMapper::toDomain);
+    }
+
+    @Override
+    public List<Expense> loadAllExpenses() {
+        return springDataExpenseRepository.findAll().stream().map(ExpenseMapper::toDomain).toList();
     }
 }

@@ -21,7 +21,7 @@ final class ExpenseMapper {
     }
 
     static Expense toDomain(ExpenseJpaEntity j) {
-        // rehydrate, not create: loaded data skips the "new expense" rules
+        // rehydrate, not create: loaded data skips the "new loadById" rules
         return Expense.rehydrate(
                 new ExpenseId(j.getId()),
                 new Money(j.getAmount(), Currency.getInstance(j.getCurrency())),

@@ -22,22 +22,21 @@ public class ExpenseController {
     private final CreateExpenseUseCase createExpenseUseCase;
     private final GetExpenseUseCase getExpenseUseCase;
     private final UpdateExpenseUseCase updateExpenseUseCase;
+    private final DeleteExpenseUseCase deleteExpenseUseCase;
 
-    public ExpenseController(CreateExpenseUseCase createExpenseUseCase, GetExpenseUseCase getExpenseUseCase, UpdateExpenseUseCase updateExpenseUseCase) {
+    public ExpenseController(CreateExpenseUseCase createExpenseUseCase, GetExpenseUseCase getExpenseUseCase, UpdateExpenseUseCase updateExpenseUseCase, DeleteExpenseUseCase deleteExpenseUseCase) {
         this.createExpenseUseCase = createExpenseUseCase;
         this.getExpenseUseCase = getExpenseUseCase;
         this.updateExpenseUseCase = updateExpenseUseCase;
+        this.deleteExpenseUseCase = deleteExpenseUseCase;
     }
 
     @PostMapping
     ResponseEntity<ExpenseResponse> create(@Valid @RequestBody ExpenseRequest req) {
-        // 1. HTTP language -> domain language
         var command = new CreateExpenseCommand(
                 new Money(req.amount(), Currency.getInstance(req.currency())),
                 req.description(), req.category(), req.spentOn());
-        // 2. Call the use case
         Expense created = createExpenseUseCase.createExpense(command);
-        // 3. Domain -> response, 201 + Location header
         return ResponseEntity
                 .created(URI.create("/api/expenses/" + created.id().value()))
                 .body(ExpenseResponse.from(created));
@@ -62,5 +61,12 @@ public class ExpenseController {
         Expense updated = updateExpenseUseCase.updateExpense(command);
         return ResponseEntity.ok()
                 .body(ExpenseResponse.from(updated));
+    }
+
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<Void> deleteExpense(@PathVariable UUID id) {
+        deleteExpenseUseCase.deleteExpense(new ExpenseId(id));
+        return ResponseEntity.noContent().build();
     }
 }

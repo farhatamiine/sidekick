@@ -1,5 +1,6 @@
 package com.aminef.sidekick.expense.adapter.out.persistence;
 
+import com.aminef.sidekick.expense.application.port.out.DeleteExpensePort;
 import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
 import com.aminef.sidekick.expense.application.port.out.SaveExpensePort;
 import com.aminef.sidekick.expense.domain.Expense;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class ExpensePersistenceAdapter implements SaveExpensePort, LoadExpensePort {
+public class ExpensePersistenceAdapter implements SaveExpensePort, LoadExpensePort, DeleteExpensePort {
 
 
     private final SpringDataExpenseRepository  springDataExpenseRepository;
@@ -32,5 +33,10 @@ public class ExpensePersistenceAdapter implements SaveExpensePort, LoadExpensePo
     @Override
     public List<Expense> loadAllExpenses() {
         return springDataExpenseRepository.findAll().stream().map(ExpenseMapper::toDomain).toList();
+    }
+
+    @Override
+    public void deleteExpense(ExpenseId expenseId) {
+        springDataExpenseRepository.deleteById(expenseId.value());
     }
 }

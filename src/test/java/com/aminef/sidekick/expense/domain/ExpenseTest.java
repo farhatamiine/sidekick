@@ -1,5 +1,6 @@
 package com.aminef.sidekick.expense.domain;
 
+import com.aminef.sidekick.expense.domain.exception.DomainValidationException;
 import org.junit.jupiter.api.Test;
 
 import java.time.*;

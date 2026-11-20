@@ -34,7 +34,7 @@ public class ExpenseController {
     @PostMapping
     ResponseEntity<ExpenseResponse> create(@Valid @RequestBody ExpenseRequest req) {
         var command = new CreateExpenseCommand(
-                new Money(req.amount(), Currency.getInstance(req.currency())),
+                Money.of(req.amount(),req.currency()),
                 req.description(), req.category(), req.spentOn());
         Expense created = createExpenseUseCase.createExpense(command);
         return ResponseEntity
@@ -57,7 +57,7 @@ public class ExpenseController {
 
     @PutMapping("/{id}")
     ResponseEntity<ExpenseResponse> updateExpense(@PathVariable UUID id, @Valid @RequestBody ExpenseRequest req) {
-        var command = new UpdateExpenseCommand(new ExpenseId(id),new Money(req.amount(),Currency.getInstance(req.currency())),req.description(),req.category(),req.spentOn());
+        var command = new UpdateExpenseCommand(new ExpenseId(id),Money.of(req.amount(),req.currency()),req.description(),req.category(),req.spentOn());
         Expense updated = updateExpenseUseCase.updateExpense(command);
         return ResponseEntity.ok()
                 .body(ExpenseResponse.from(updated));

@@ -2,7 +2,9 @@ package com.aminef.sidekick.expense.adapter.in.web;
 
 import com.aminef.sidekick.expense.application.exception.ExpenseNotFoundException;
 import com.aminef.sidekick.expense.application.port.in.CreateExpenseUseCase;
+import com.aminef.sidekick.expense.application.port.in.DeleteExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.in.GetExpenseUseCase;
+import com.aminef.sidekick.expense.application.port.in.UpdateExpenseUseCase;
 import com.aminef.sidekick.expense.domain.ExpenseId;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,10 @@ class ExpenseControllerTest {
     CreateExpenseUseCase createExpenseUseCase;   // controller needs both
     @MockitoBean
     GetExpenseUseCase getExpenseUseCase;
+    @MockitoBean
+    DeleteExpenseUseCase deleteExpenseUseCase;
+    @MockitoBean
+    UpdateExpenseUseCase updateExpenseUseCase;
 
     @Test
     void create() {

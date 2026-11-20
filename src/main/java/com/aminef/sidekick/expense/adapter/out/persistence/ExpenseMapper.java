@@ -24,7 +24,7 @@ final class ExpenseMapper {
         // rehydrate, not create: loaded data skips the "new loadById" rules
         return Expense.rehydrate(
                 new ExpenseId(j.getId()),
-                new Money(j.getAmount(), Currency.getInstance(j.getCurrency())),
+                Money.of(j.getAmount(),j.getCurrency()),
                 j.getDescription(),
                 Category.valueOf(j.getCategory()),
                 j.getSpentOn(),

@@ -1,5 +1,7 @@
 package com.aminef.sidekick.expense.domain;
 
+import com.aminef.sidekick.expense.domain.exception.DomainValidationException;
+
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;

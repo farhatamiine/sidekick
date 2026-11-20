@@ -28,5 +28,6 @@ public class DeleteExpenseService implements DeleteExpenseUseCase {
             throw new ExpenseNotFoundException(id);
         }
         deleteExpensePort.deleteExpense(id);
+
     }
 }

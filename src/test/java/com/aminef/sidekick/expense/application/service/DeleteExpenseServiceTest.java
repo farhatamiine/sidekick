@@ -15,7 +15,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -35,11 +34,11 @@ class DeleteExpenseServiceTest {
 
         var expense = new Expense(ExpenseId.generate(),Money.eur("89.0"),
                 Category.TRANSPORT, "Navigo", LocalDate.of(2026, 11, 12), Instant.now());
-        when(loadExpensePort.loadById(expense.id())).thenReturn(Optional.of(expense));
+        when(loadExpensePort.loadById(expense.getId())).thenReturn(Optional.of(expense));
 
         var service = new  DeleteExpenseService(deleteExpensePort, loadExpensePort);
-        service.deleteExpense(expense.id());
-        verify(deleteExpensePort).deleteExpense(expense.id());
+        service.deleteExpense(expense.getId());
+        verify(deleteExpensePort).deleteExpense(expense.getId());
     }
 
 }

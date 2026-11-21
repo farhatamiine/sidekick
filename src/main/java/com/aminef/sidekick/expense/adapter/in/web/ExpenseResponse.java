@@ -12,8 +12,8 @@ public record ExpenseResponse(UUID id, BigDecimal amount, String currency, Strin
                               Category category, LocalDate spentOn, Instant createdAt) {
 
     static ExpenseResponse from(Expense e) {
-        return new ExpenseResponse(e.id().value(), e.amount().amount(),
-                e.amount().currency().getCurrencyCode(), e.description(),
-                e.category(), e.spentOn(), e.createdAt());
+        return new ExpenseResponse(e.getId().value(), e.getAmount().amount(),
+                e.getAmount().currency().getCurrencyCode(), e.getDescription(),
+                e.getCategory(), e.getSpentOn(), e.getCreatedAt());
     }
 }

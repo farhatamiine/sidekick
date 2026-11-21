@@ -1,7 +1,6 @@
 package com.aminef.sidekick.expense.application.service;
 
 import com.aminef.sidekick.expense.application.exception.ExpenseNotFoundException;
-import com.aminef.sidekick.expense.application.port.in.GetExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
 import com.aminef.sidekick.expense.domain.Category;
 import com.aminef.sidekick.expense.domain.Expense;
@@ -11,17 +10,17 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import static org.mockito.Mockito.when;
+
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class GetExpenseServiceTest {
@@ -37,14 +36,14 @@ class GetExpenseServiceTest {
             LocalDate.of(2026, 11, 12), clock);
     @Test
     void returnExpenseWhenFound() {
-        when(loadExpensePort.loadById(lunch.id())).thenReturn(Optional.of(lunch));
-        assertEquals(lunch, service.getExpense(lunch.id()));
+        when(loadExpensePort.loadById(lunch.getId())).thenReturn(Optional.of(lunch));
+        assertEquals(lunch, service.getExpense(lunch.getId()));
     }
 
     @Test
     void throwWhenNotFound() {
-        when(loadExpensePort.loadById(lunch.id())).thenReturn(Optional.empty());
-        assertThrows(ExpenseNotFoundException.class,() -> service.getExpense(lunch.id()));
+        when(loadExpensePort.loadById(lunch.getId())).thenReturn(Optional.empty());
+        assertThrows(ExpenseNotFoundException.class,() -> service.getExpense(lunch.getId()));
     }
 
     @Test

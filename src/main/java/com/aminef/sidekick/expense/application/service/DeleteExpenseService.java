@@ -4,11 +4,9 @@ import com.aminef.sidekick.expense.application.exception.ExpenseNotFoundExceptio
 import com.aminef.sidekick.expense.application.port.in.DeleteExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.out.DeleteExpensePort;
 import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
-import com.aminef.sidekick.expense.application.port.out.SaveExpensePort;
 import com.aminef.sidekick.expense.domain.ExpenseId;
 import org.springframework.stereotype.Service;
-
-import java.time.Clock;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DeleteExpenseService implements DeleteExpenseUseCase {
@@ -22,6 +20,7 @@ public class DeleteExpenseService implements DeleteExpenseUseCase {
 
 
     @Override
+    @Transactional
     public void deleteExpense(ExpenseId id) {
         var expense = loadExpensePort.loadById(id);
         if(expense.isEmpty()){

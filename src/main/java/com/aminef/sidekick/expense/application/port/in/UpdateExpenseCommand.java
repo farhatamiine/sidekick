@@ -11,6 +11,7 @@ public record UpdateExpenseCommand(ExpenseId expenseId,Money amount, String desc
                                    Category category, LocalDate spentOn) {
 
     public UpdateExpenseCommand {
+        Objects.requireNonNull(expenseId,"ExpenseId is required");
         Objects.requireNonNull(amount, "amount is required");
         Objects.requireNonNull(spentOn, "spentOn is required");
     }

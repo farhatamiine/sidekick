@@ -5,19 +5,17 @@ import com.aminef.sidekick.expense.domain.Expense;
 import com.aminef.sidekick.expense.domain.ExpenseId;
 import com.aminef.sidekick.expense.domain.Money;
 
-import java.util.Currency;
-
 final class ExpenseMapper {
     private ExpenseMapper() {}
     static ExpenseJpaEntity toEntity(Expense e) {
         return new ExpenseJpaEntity(
-                e.id().value(),
-                e.amount().amount(),
-                e.amount().currency().getCurrencyCode(),
-                e.description(),
-                e.category().name(),
-                e.spentOn(),
-                e.createdAt());
+                e.getId().value(),
+                e.getAmount().amount(),
+                e.getAmount().currency().getCurrencyCode(),
+                e.getDescription(),
+                e.getCategory().name(),
+                e.getSpentOn(),
+                e.getCreatedAt());
     }
 
     static Expense toDomain(ExpenseJpaEntity j) {

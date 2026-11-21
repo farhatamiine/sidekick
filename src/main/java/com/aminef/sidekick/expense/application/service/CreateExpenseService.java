@@ -4,7 +4,7 @@ import com.aminef.sidekick.expense.application.port.in.CreateExpenseCommand;
 import com.aminef.sidekick.expense.application.port.in.CreateExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.out.SaveExpensePort;
 import com.aminef.sidekick.expense.domain.Expense;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.Clock;

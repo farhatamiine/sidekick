@@ -5,7 +5,7 @@ import com.aminef.sidekick.expense.application.port.in.GetExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
 import com.aminef.sidekick.expense.domain.Expense;
 import com.aminef.sidekick.expense.domain.ExpenseId;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

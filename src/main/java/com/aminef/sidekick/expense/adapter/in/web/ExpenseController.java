@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.Currency;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,7 +37,7 @@ public class ExpenseController {
                 req.description(), req.category(), req.spentOn());
         Expense created = createExpenseUseCase.createExpense(command);
         return ResponseEntity
-                .created(URI.create("/api/expenses/" + created.id().value()))
+                .created(URI.create("/api/expenses/" + created.getId().value()))
                 .body(ExpenseResponse.from(created));
     }
 

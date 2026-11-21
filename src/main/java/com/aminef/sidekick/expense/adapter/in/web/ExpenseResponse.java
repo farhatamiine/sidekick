@@ -1,7 +1,7 @@
 package com.aminef.sidekick.expense.adapter.in.web;
 
-import com.aminef.sidekick.expense.domain.Category;
-import com.aminef.sidekick.expense.domain.Expense;
+import com.aminef.sidekick.expense.domain.enums.Category;
+import com.aminef.sidekick.expense.domain.models.Expense;
 
 import java.math.BigDecimal;
 import java.time.Instant;

@@ -1,6 +1,9 @@
 package com.aminef.sidekick.expense.domain;
 
+import com.aminef.sidekick.expense.domain.enums.Category;
 import com.aminef.sidekick.expense.domain.exception.DomainValidationException;
+import com.aminef.sidekick.expense.domain.models.Expense;
+import com.aminef.sidekick.expense.domain.models.Money;
 import org.junit.jupiter.api.Test;
 
 import java.time.*;

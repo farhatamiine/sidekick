@@ -4,7 +4,7 @@ import com.aminef.sidekick.expense.application.exception.ExpenseNotFoundExceptio
 import com.aminef.sidekick.expense.application.port.in.DeleteExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.out.DeleteExpensePort;
 import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
-import com.aminef.sidekick.expense.domain.ExpenseId;
+import com.aminef.sidekick.expense.domain.models.ExpenseId;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

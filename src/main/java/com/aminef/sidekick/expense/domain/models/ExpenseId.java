@@ -1,4 +1,4 @@
-package com.aminef.sidekick.expense.domain;
+package com.aminef.sidekick.expense.domain.models;
 
 import java.util.Objects;
 import java.util.UUID;

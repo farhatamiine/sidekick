@@ -1,8 +1,8 @@
 package com.aminef.sidekick.expense.application.port.in;
 
-import com.aminef.sidekick.expense.domain.Category;
-import com.aminef.sidekick.expense.domain.ExpenseId;
-import com.aminef.sidekick.expense.domain.Money;
+import com.aminef.sidekick.expense.domain.enums.Category;
+import com.aminef.sidekick.expense.domain.models.ExpenseId;
+import com.aminef.sidekick.expense.domain.models.Money;
 
 import java.time.LocalDate;
 import java.util.Objects;

@@ -1,7 +1,7 @@
 package com.aminef.sidekick.expense.adapter.in.web;
 
 import com.aminef.sidekick.expense.adapter.in.web.validation.ValidCurrency;
-import com.aminef.sidekick.expense.domain.Category;
+import com.aminef.sidekick.expense.domain.enums.Category;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

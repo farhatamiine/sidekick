@@ -5,7 +5,7 @@ import com.aminef.sidekick.expense.application.port.in.CreateExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.in.DeleteExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.in.GetExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.in.UpdateExpenseUseCase;
-import com.aminef.sidekick.expense.domain.ExpenseId;
+import com.aminef.sidekick.expense.domain.models.ExpenseId;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

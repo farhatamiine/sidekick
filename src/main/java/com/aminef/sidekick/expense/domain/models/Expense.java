@@ -1,5 +1,6 @@
-package com.aminef.sidekick.expense.domain;
+package com.aminef.sidekick.expense.domain.models;
 
+import com.aminef.sidekick.expense.domain.enums.Category;
 import com.aminef.sidekick.expense.domain.exception.DomainValidationException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

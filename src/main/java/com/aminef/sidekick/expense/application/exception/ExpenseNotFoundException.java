@@ -1,6 +1,6 @@
 package com.aminef.sidekick.expense.application.exception;
 
-import com.aminef.sidekick.expense.domain.ExpenseId;
+import com.aminef.sidekick.expense.domain.models.ExpenseId;
 import lombok.Getter;
 
 @Getter

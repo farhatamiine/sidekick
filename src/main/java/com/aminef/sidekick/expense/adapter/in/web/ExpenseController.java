@@ -1,9 +1,9 @@
 package com.aminef.sidekick.expense.adapter.in.web;
 
 import com.aminef.sidekick.expense.application.port.in.*;
-import com.aminef.sidekick.expense.domain.Expense;
-import com.aminef.sidekick.expense.domain.ExpenseId;
-import com.aminef.sidekick.expense.domain.Money;
+import com.aminef.sidekick.expense.domain.models.Expense;
+import com.aminef.sidekick.expense.domain.models.ExpenseId;
+import com.aminef.sidekick.expense.domain.models.Money;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -3,8 +3,8 @@ package com.aminef.sidekick.expense.application.service;
 import com.aminef.sidekick.expense.application.exception.ExpenseNotFoundException;
 import com.aminef.sidekick.expense.application.port.in.GetExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
-import com.aminef.sidekick.expense.domain.Expense;
-import com.aminef.sidekick.expense.domain.ExpenseId;
+import com.aminef.sidekick.expense.domain.models.Expense;
+import com.aminef.sidekick.expense.domain.models.ExpenseId;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 

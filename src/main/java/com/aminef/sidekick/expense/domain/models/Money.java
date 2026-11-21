@@ -1,4 +1,4 @@
-package com.aminef.sidekick.expense.domain;
+package com.aminef.sidekick.expense.domain.models;
 
 import com.aminef.sidekick.expense.domain.exception.DomainValidationException;
 import com.aminef.sidekick.expense.domain.exception.InvalidCurrencyException;
@@ -14,7 +14,7 @@ public record Money(BigDecimal amount, Currency currency) {
         }
 
         amount = amount.setScale(2, RoundingMode.HALF_EVEN);
-        if(amount.signum() < 0) throw new DomainValidationException("Amount must be greater than zero");
+        if(amount.signum() <= 0) throw new DomainValidationException("Amount must be greater than zero");
     }
 
     public static Money eur(String value){

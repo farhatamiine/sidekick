@@ -2,9 +2,9 @@ package com.aminef.sidekick.expense.application.service;
 
 import com.aminef.sidekick.expense.application.exception.ExpenseNotFoundException;
 import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
-import com.aminef.sidekick.expense.domain.Category;
-import com.aminef.sidekick.expense.domain.Expense;
-import com.aminef.sidekick.expense.domain.Money;
+import com.aminef.sidekick.expense.domain.enums.Category;
+import com.aminef.sidekick.expense.domain.models.Expense;
+import com.aminef.sidekick.expense.domain.models.Money;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

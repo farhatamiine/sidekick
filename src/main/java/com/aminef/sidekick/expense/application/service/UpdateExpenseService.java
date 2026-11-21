@@ -6,7 +6,7 @@ import com.aminef.sidekick.expense.application.port.in.UpdateExpenseCommand;
 import com.aminef.sidekick.expense.application.port.in.UpdateExpenseUseCase;
 import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
 import com.aminef.sidekick.expense.application.port.out.SaveExpensePort;
-import com.aminef.sidekick.expense.domain.Expense;
+import com.aminef.sidekick.expense.domain.models.Expense;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,9 @@ public class UpdateExpenseService implements UpdateExpenseUseCase {
     @Override
     @Transactional
     public Expense updateExpense(UpdateExpenseCommand updateExpenseCommand) {
+        System.out.println(updateExpenseCommand);
         Optional<Expense> expenseOptional =  loadExpensePort.loadById(updateExpenseCommand.expenseId());
+
         if (expenseOptional.isEmpty()) {
             throw new ExpenseNotFoundException(updateExpenseCommand.expenseId());
         }

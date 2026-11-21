@@ -3,8 +3,8 @@ package com.aminef.sidekick.expense.adapter.out.persistence;
 import com.aminef.sidekick.expense.application.port.out.DeleteExpensePort;
 import com.aminef.sidekick.expense.application.port.out.LoadExpensePort;
 import com.aminef.sidekick.expense.application.port.out.SaveExpensePort;
-import com.aminef.sidekick.expense.domain.Expense;
-import com.aminef.sidekick.expense.domain.ExpenseId;
+import com.aminef.sidekick.expense.domain.models.Expense;
+import com.aminef.sidekick.expense.domain.models.ExpenseId;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

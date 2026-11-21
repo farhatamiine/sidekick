@@ -2,9 +2,9 @@ package com.aminef.sidekick.expense.application.service;
 
 import com.aminef.sidekick.expense.application.port.in.CreateExpenseCommand;
 import com.aminef.sidekick.expense.application.port.out.SaveExpensePort;
-import com.aminef.sidekick.expense.domain.Category;
-import com.aminef.sidekick.expense.domain.Expense;
-import com.aminef.sidekick.expense.domain.Money;
+import com.aminef.sidekick.expense.domain.enums.Category;
+import com.aminef.sidekick.expense.domain.models.Expense;
+import com.aminef.sidekick.expense.domain.models.Money;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -15,7 +15,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,4 +33,7 @@ class CreateExpenseServiceTest {
 
         verify(saveExpensePort).save(result);   // the service asked the port to save it
     }
+
+
+
 }
